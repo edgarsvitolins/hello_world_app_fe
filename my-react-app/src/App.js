@@ -6,12 +6,14 @@ function App() {
   const [message, setMessage] = useState('');
 
   console.log(process.env.REACT_APP_BE_URI)
-  useEffect(() => {
-    fetch(process.env.REACT_APP_BE_URI)
-        .then(response => response.text())
-        .then(data => setMessage(data))
-        .catch(error => console.error('Error:', error));
-  }, []);
+    useEffect(() => {
+        names()
+    }, []);
+
+  const names = async() => {
+      const response = await fetch(process.env.REACT_APP_BE_URI);
+      setMessage(await response.text())
+  }
 
   return (
       <div className="App">
