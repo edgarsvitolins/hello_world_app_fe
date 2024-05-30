@@ -1,5 +1,6 @@
-FROM node:17-alpine
+FROM python:3.11
+RUN pip install django requests
 WORKDIR /app
-COPY my-react-app .
-RUN npm install
-CMD npm start
+COPY django_fe .
+EXPOSE 8000
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
