@@ -1,5 +1,5 @@
 FROM node:17-alpine
-RUN npm install -g serve
 WORKDIR /app
 COPY my-react-app .
+RUN npm install
 CMD npm start
